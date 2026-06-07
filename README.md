@@ -40,23 +40,43 @@ Agent 之间传递信息需要一种统一格式。就像人类用中文交流�
 ## 前置条件
 
 - 支持 skill 的 AI 编程工具（Claude Code、Cursor 等）
-- [Tavily API Key](https://tavily.com)（免费注册，用于联网搜索最新资料）
+- 联网搜索工具（推荐 Tavily，见下方安装说明）
 
 ## 安装
 
-### 方法一：命令行安装（推荐）
+### 第 1 步：安装联网搜索工具（推荐）
+
+本 skill 在写作前会联网调研最新资料。推荐安装 Tavily，搜索效果最好。
+
+#### Tavily MCP Server（推荐）
+
+[Tavily](https://github.com/tavily-ai/tavily-mcp) 是专为 AI 设计的搜索引擎，支持中英文、多深度搜索。
 
 ```bash
-# 1. 安装 Tavily MCP Server（让 AI 能联网搜索）
-#    注册 https://tavily.com 获取 API Key
+# 注册 https://tavily.com 获取 API Key（有免费额度），然后运行：
 claude mcp add --transport http tavily "https://mcp.tavily.com/mcp/?tavilyApiKey=你的API_KEY"
+```
 
-# 2. 下载 skill 到项目目录
+#### Context7（可选）
+
+[Context7](https://github.com/upstash/context7) 用于查询编程库/框架的最新文档，适合涉及代码的教程。
+
+```bash
+claude mcp add context7 npx -y @upstash/context7-mcp@latest
+```
+
+> 如果你没有 Tavily 和 Context7，也可以在 SKILL.md 中替换成其他搜索工具，见下方「自定义」章节。
+
+### 第 2 步：安装 skill
+
+#### 方法一：命令行安装
+
+```bash
 mkdir -p .claude/skills/tutorial
 curl -o .claude/skills/tutorial/SKILL.md https://raw.githubusercontent.com/YanZephyr14/tutorial-skill/main/SKILL.md
 ```
 
-### 方法二：手动安装
+#### 方法二：手动安装
 
 1. 下载本仓库的 `SKILL.md` 文件
 2. 在你的项目中创建 `.claude/skills/tutorial/` 目录
@@ -106,9 +126,9 @@ curl -o .claude/skills/tutorial/SKILL.md https://raw.githubusercontent.com/YanZe
 
 ## 自定义
 
-### 没有 Tavily？
+### 替换搜索工具
 
-SKILL.md 中的调研方式可以替换成你有的工具：
+SKILL.md 中的调研方式可以替换成你有的工具。打开 SKILL.md，找到这段：
 
 ```markdown
 **调研方式：**
@@ -117,7 +137,7 @@ SKILL.md 中的调研方式可以替换成你有的工具：
 - 用 Context7 查询编程库文档
 ```
 
-比如你没有 Tavily 和 Context7，可以改成：
+改成你有的工具即可，比如：
 
 ```markdown
 **调研方式：**
