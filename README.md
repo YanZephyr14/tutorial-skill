@@ -48,7 +48,7 @@ Agent 之间传递信息需要一种统一格式。就像人类用中文交流�
 
 | 工具 | 用途 | 项目地址 |
 |------|------|---------|
-| **Tavily**（推荐） | 搜索最新信息，效果最好 | [github.com/tavily-ai/tavily-mcp](https://github.com/tavily-ai/tavily-mcp) |
+| **Tavily**（推荐） | 搜索最新信息，效果最好，免费额度足够个人使用 | [github.com/tavily-ai/tavily-mcp](https://github.com/tavily-ai/tavily-mcp) |
 | **Context7**（可选） | 查询编程库/框架最新文档 | [github.com/upstash/context7](https://github.com/upstash/context7) |
 
 > 如果没有这些工具，可以在 SKILL.md 中替换成你有的搜索工具，见下方「自定义」章节。
