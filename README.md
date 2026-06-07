@@ -1,6 +1,6 @@
 # tutorial-skill
 
-一个 Claude Code skill，让你的 AI 自动生成**零基础也能看懂**的中文技术教程或讲义。
+一个 AI skill，让你的 AI 自动生成**零基础也能看懂**的中文技术教程或讲义。
 
 你只需要说一句话，比如"帮我写一个 Docker 入门教程"，它就会自动调研最新资料、设计大纲、生成完整内容、自查质量，最后保存为 `.md` 文件。
 
@@ -37,35 +37,42 @@ Agent 之间传递信息需要一种统一格式。就像人类用中文交流�
 </details>
 ```
 
-完整示例：[python-for-ai-agent.md](https://github.com/YanZephyr14/tutorial-skill/blob/main/examples/python-for-ai-agent.md)
-
 ## 前置条件
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) 已安装
+- 支持 skill 的 AI 编程工具（Claude Code、Cursor 等）
 - [Tavily API Key](https://tavily.com)（免费注册，用于联网搜索最新资料）
 
 ## 安装
 
-### 第 1 步：安装 Tavily MCP Server（推荐）
-
-Tavily 让 skill 能联网搜索最新资料，确保内容准确。没有它也能用，但搜索效果会差很多。
+### 方法一：命令行安装（推荐）
 
 ```bash
-# 注册 https://tavily.com 获取 API Key，然后运行：
+# 1. 安装 Tavily MCP Server（让 AI 能联网搜索）
+#    注册 https://tavily.com 获取 API Key
 claude mcp add --transport http tavily "https://mcp.tavily.com/mcp/?tavilyApiKey=你的API_KEY"
-```
 
-### 第 2 步：安装 skill
-
-```bash
-# 在你的项目目录下运行
+# 2. 下载 skill 到项目目录
 mkdir -p .claude/skills/tutorial
 curl -o .claude/skills/tutorial/SKILL.md https://raw.githubusercontent.com/YanZephyr14/tutorial-skill/main/SKILL.md
 ```
 
+### 方法二：手动安装
+
+1. 下载本仓库的 `SKILL.md` 文件
+2. 在你的项目中创建 `.claude/skills/tutorial/` 目录
+3. 将 `SKILL.md` 放入该目录
+
+```
+你的项目/
+└── .claude/
+    └── skills/
+        └── tutorial/
+            └── SKILL.md
+```
+
 ## 使用
 
-在 Claude Code 中，用自然语言触发：
+用自然语言触发：
 
 ```
 帮我写一个 Docker 零基础入门教程
@@ -79,15 +86,9 @@ curl -o .claude/skills/tutorial/SKILL.md https://raw.githubusercontent.com/YanZe
 帮我写一个 VS Code 使用教程，保存到 ./docs/
 ```
 
-### 触发关键词
+**触发关键词：** "写教程"、"写讲义"、"零基础"、"入门指南"、"使用教程"、"新手教程"、"从零开始学"、"通俗易懂"
 
-"写教程"、"写讲义"、"零基础"、"入门指南"、"使用教程"、"新手教程"、"从零开始学"、"通俗易懂"
-
-### 输出
-
-- 固定输出为 `.md` 文件
-- 保存到你指定的目录
-- 如果没指定路径，会询问你
+**输出：** 固定为 `.md` 文件，保存到你指定的目录。
 
 ## 工作流程
 
@@ -102,6 +103,31 @@ curl -o .claude/skills/tutorial/SKILL.md https://raw.githubusercontent.com/YanZe
 5. **自查** — 检查正确性、结构、完整性
 6. **修复** — 发现问题自动修复，直到自查通过
 7. **保存** — 写入 `.md` 文件
+
+## 自定义
+
+### 没有 Tavily？
+
+SKILL.md 中的调研方式可以替换成你有的工具：
+
+```markdown
+**调研方式：**
+- 用 Tavily 搜索最新信息（首选）
+- 用 WebFetch 抓取官方文档
+- 用 Context7 查询编程库文档
+```
+
+比如你没有 Tavily 和 Context7，可以改成：
+
+```markdown
+**调研方式：**
+- 用 WebFetch 抓取官方文档
+- 用 WebSearch 搜索最新信息
+```
+
+### 修改写作风格？
+
+编辑 SKILL.md 末尾的「写作要点」部分即可。
 
 ## 设计理念
 
