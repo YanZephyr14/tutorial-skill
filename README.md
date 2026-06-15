@@ -37,6 +37,11 @@ Agent 之间传递信息需要一种统一格式。就像人类用中文交流�
 </details>
 ```
 
+**完整示例输出：**
+
+- [Docker 是什么？— 零基础概念理解讲义](examples/docker-example.md) （概念理解型）
+- [LaTeX 公式语法教程](examples/latex-example.md) （工具使用型）
+
 ## 前置条件
 
 - 支持 skill 的 AI 编程工具（Claude Code、Cursor 等）
