@@ -1,6 +1,11 @@
 ---
 name: tutorial
+version: 1.0.0
+author: YanZephyr14
 description: 为零基础用户生成高质量的中文技术教程或讲义。适用于任何需要"让小白看懂"的场景——技术概念讲义、软件使用教程、工具入门指南、API 接入文档等。当用户提到"写教程"、"写讲义"、"零基础"、"入门指南"、"使用教程"、"新手教程"、"从零开始学"、"通俗易懂"时，务必使用此 skill。
+tags: [tutorial, education, chinese, beginner]
+category: education
+license: MIT
 ---
 
 # 零基础技术内容生成器
