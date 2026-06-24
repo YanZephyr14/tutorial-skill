@@ -62,26 +62,25 @@ Agent 之间传递信息需要一种统一格式。就像人类用中文交流�
 
 以下以 Claude Code 为例，其他 AI 工具请参考对应文档。
 
-### 方法一：命令行安装
+### 全局安装（所有项目可用）
 
 ```bash
-mkdir -p .claude/skills/tutorial
-curl -o .claude/skills/tutorial/SKILL.md https://raw.githubusercontent.com/YanZephyr14/tutorial-skill/main/SKILL.md
+mkdir -p ~/.claude/skills
+cd ~/.claude/skills
+git clone https://github.com/YanZephyr14/tutorial-skill.git tutorial
 ```
 
-### 方法二：手动安装
+### 项目内安装（仅当前项目可用）
 
-1. 下载本仓库的 `SKILL.md` 文件
-2. 在你的项目中创建 `.claude/skills/tutorial/` 目录
-3. 将 `SKILL.md` 放入该目录
+在你的项目根目录下打开终端，然后执行：
 
+```bash
+mkdir -p .claude/skills
+cd .claude/skills
+git clone https://github.com/YanZephyr14/tutorial-skill.git tutorial
 ```
-你的项目/
-└── .claude/
-    └── skills/
-        └── tutorial/
-            └── SKILL.md
-```
+
+> 安装完成后，直接对 AI 说"写教程"就能触发。
 
 ## 使用
 
