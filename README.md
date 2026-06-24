@@ -82,6 +82,15 @@ git clone https://github.com/YanZephyr14/tutorial-skill.git tutorial
 
 > 安装完成后，直接对 AI 说"写教程"就能触发。
 
+### 其他 AI 工具
+
+找到你所用工具的 skills 目录，然后 `git clone` 即可：
+
+```bash
+cd <你的 skills 目录>
+git clone https://github.com/YanZephyr14/tutorial-skill.git tutorial
+```
+
 ## 使用
 
 用自然语言触发：
